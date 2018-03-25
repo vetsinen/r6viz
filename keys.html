@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script src="vue.js"></script>
     <meta charset="utf-8">
   <link rel="dns-prefetch" href="https://assets-cdn.github.com/">
   <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com/">
@@ -319,52 +320,55 @@
 
 
   <div class="col-9 float-left">
-    
-  <div class="Subhead">
-    <div class="Subhead-heading">RMH keys</div>
-    <div class="Subhead-actions">
-        <a href="https://github.com/settings/ssh/new" class="btn btn-sm btn-primary">New SSH key</a>
-    </div>
-  </div>
 
-    <p>
-      This is a list of SSH keys associated with your account.
-        Remove any keys that you do not recognize.
-    </p>
+
+
+
+    <div id="app">
+        <div class="Subhead">
+            <div class="Subhead-heading">RMH keys</div>
+            <!--<div class="Subhead-actions">-->
+                <!--<a href="new.html" class="btn btn-sm btn-primary">New RMH key</a>-->
+            <!--</div>-->
+        </div>
+
+        <p>
+            This is a list of RMH keys associated with your account.
+            Remove any keys that you do not recognize. magic number - {{ lucky }}
+        </p>
     <ul class="Box mb-3">
-        <li class="Box-row access-token " id="ssh-key-27965556">
+        <li v-for="key in keys" class="Box-row access-token " id="ssh-key-27965556">
   <span class="user-key-type TableObject-item">
     <span class="js-user-key-icon ">
       <svg height="32" class="octicon octicon-key" viewBox="0 0 14 16" version="1.1" width="28" aria-hidden="true"><path fill-rule="evenodd" d="M12.83 2.17C12.08 1.42 11.14 1.03 10 1c-1.13.03-2.08.42-2.83 1.17S6.04 3.86 6.01 5c0 .3.03.59.09.89L0 12v1l1 1h2l1-1v-1h1v-1h1v-1h2l1.09-1.11c.3.08.59.11.91.11 1.14-.03 2.08-.42 2.83-1.17S13.97 6.14 14 5c-.03-1.14-.42-2.08-1.17-2.83zM11 5.38c-.77 0-1.38-.61-1.38-1.38 0-.77.61-1.38 1.38-1.38.77 0 1.38.61 1.38 1.38 0 .77-.61 1.38-1.38 1.38z"></path></svg>
     </span>
-    <span class="user-key-badge text-gray">SSH</span>
+    <span class="user-key-badge text-gray">RMH</span>
   </span>
 
   <span class="user-key-details TableObject-item js-details-container Details">
-    <strong class="d-block">working MacBook</strong>
-    <strong>Fingerprint:</strong> <code>8a:7a:1a:66:35:43:96:91:d8:82:be:94:fe:12:1d:c8</code>
+    <strong class="d-block">{{key.title}}</strong>
+    <strong>Certified by:</strong> <code>{{key.centre}}</code>
     <span class="text-gray d-block">
-      Added on <local-time datetime="2018-03-25T07:33:51Z" month="short" day="numeric" year="numeric" title="Mar 25, 2018, 10:33 AM GMT+3">Mar 25, 2018</local-time>
+      Valid until {{key.inidate}}
     </span>
     <span class="text-gray d-block">
-        <span class="">Never used</span>
-       — Read/write
+       — {{key.permissions}}
     </span>
   </span>
 
   <span class="TableObject-item border-bottom-0">
       <div class="listgroup-item">
-          <button type="submit" data-facebox="#delete-ssh-key-confirm-27965556" data-facebox-class="dangerzone" class="btn btn-sm btn-danger">Delete</button>
+          <button disabled type="submit" data-facebox="#delete-ssh-key-confirm-27965556" data-facebox-class="dangerzone" class="btn btn-sm btn-danger">Delete</button>
       </div>
 
   </span>
 
   <div id="delete-ssh-key-confirm-27965556" style="display:none">
-    <h2 class="facebox-header">Are you sure you want to delete this SSH key?</h2>
+    <h2 class="facebox-header">Are you sure you want to delete this RMH key?</h2>
 
     <p>
     This action <strong>CANNOT</strong> be undone. This will permanently
- delete the SSH key and if you'd like to use it in the future, you will 
+ delete the RMH key and if you'd like to use it in the future, you will
 need to upload it again.
     </p>
 
@@ -374,13 +378,11 @@ need to upload it again.
 </li>
 
     </ul>
+  </div>
 
   <p class="note">
-    Check out our guide to <a href="https://help.github.com/articles/generating-an-ssh-key/">generating SSH keys</a> or troubleshoot <a href="https://help.github.com/ssh-issues/">common SSH Problems</a>.
+    Check out our guide to <a href="https://remme.io/manual">generating RMH keys</a> or troubleshoot <a href="https://help.remme.io/help">common RMH Problems</a>.
   </p>
-
-
-
 
 </div>
 
@@ -457,8 +459,9 @@ need to upload it again.
 <div id="hovercard-aria-description" class="sr-only">
   Press h to open a hovercard with more details.
 </div>
+  </div>
 
 
-  
+  <script src="main.js"></script>
 
 </body></html>
